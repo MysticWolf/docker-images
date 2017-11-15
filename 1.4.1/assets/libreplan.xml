@@ -4,8 +4,11 @@
   <Resource name="jdbc/libreplan-ds" auth="Container"
             type="javax.sql.DataSource"
             maxActive="100" maxIdle="30" maxWait="10000"
+			testWhileIdle="true"
+			testOnBorrow="true"
+			testOnReturn="false"
+			validationQuery="SELECT 1"
             username="libreplan" password="secret"
             driverClassName="org.postgresql.Driver"
             url="jdbc:postgresql://db/libreplan" />
 </Context>
-

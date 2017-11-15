@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+ db:
+    image: postgres:9.4
+    ports:
+     - "5432:5432"
+    environment: 
+     POSTGRES_USER: libreplan
+     POSTGRES_PASSWORD: secret
+    volumes:
+     - postgresdb:/var/lib/postgresql/data
+ web:
+    image: libreplan/libreplan:latest
+    ports:
+     - "8080:8080"
+    environment:
+     LIBREPLAN_DBHOST: LibrePlan_db   
+     LIBREPLAN_DBPORT : 5432
+    depends_on:
+     - db
+volumes:
+ postgresdb:
